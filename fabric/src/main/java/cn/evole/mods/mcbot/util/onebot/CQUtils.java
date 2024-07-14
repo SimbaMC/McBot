@@ -2,16 +2,13 @@ package cn.evole.mods.mcbot.util.onebot;
 
 import cn.evole.mods.mcbot.Const;
 import cn.evole.mods.mcbot.config.ModConfig;
-import cn.evole.onebot.sdk.event.message.GroupMessageEvent;
 import cn.evole.onebot.sdk.event.message.MessageEvent;
-import io.netty.util.concurrent.SingleThreadEventExecutor;
 import lombok.val;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.concurrent.*;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -77,7 +74,11 @@ public class CQUtils {
             switch (type) {
                 case "image":
                     if (ModConfig.INSTANCE.getCommon().isImageOn() && Const.isLoad("chatimage")) {
-                        val url = Arrays.stream(data.split(","))//具体数据分割
+                        val url = Arrays.stream(
+                                        StringEscapeUtils
+                                                .escapeJava(data)//转义字符转义
+                                                .split(",")//具体数据分割
+                                )
                                 .filter(it -> it.startsWith("url"))//非空判断
                                 .map(it -> it.substring(it.indexOf('=') + 1))
                                 .findFirst();
@@ -91,14 +92,15 @@ public class CQUtils {
                     }
                     break;
                 case "at":
-                        val id = data.split("=");
-                        if (id.length == 2) {
-                            if (id[0].equals("qq"))
-                                try {
-                                    matcher.appendReplacement(message, String.format("[@%s]", BotUtils.getNickname(Long.parseLong(id[1]))));
-                                    break;
-                                } catch (NumberFormatException ignored) {}
-                        }
+                    val id = data.split("=");
+                    if (id.length == 2) {
+                        if (id[0].equals("qq"))
+                            try {
+                                matcher.appendReplacement(message, String.format("[@%s]", BotUtils.getNickname(Long.parseLong(id[1]))));
+                                break;
+                            } catch (NumberFormatException ignored) {
+                            }
+                    }
                     matcher.appendReplacement(message, "[@]");
                     break;
                 case "record":

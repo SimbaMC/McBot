@@ -27,9 +27,9 @@ dependencies {
     implementation ("cn.evole.config:AtomConfig-Toml:${toml_version}"){transitive = false}
 
     if (mcVersion == 11605) include ("org.slf4j:slf4j-api:2.0.7")
-    modCompileOnly ("maven.modrinth:vanish:1.5.2-1.20.1")
-    compileOnly ("org.projectlombok:lombok:1.18.24")
-    annotationProcessor ("org.projectlombok:lombok:1.18.24")
+    modCompileOnly ("maven.modrinth:vanish:1.5.4+1.20.1")
+    compileOnly ("org.projectlombok:lombok:1.18.30")
+    annotationProcessor ("org.projectlombok:lombok:1.18.30")
 
 }
 
@@ -43,7 +43,6 @@ loom {
 
 
 loom {
-    silentMojangMappingsLicense()
     mixin {
         useLegacyMixinAp = false
     }

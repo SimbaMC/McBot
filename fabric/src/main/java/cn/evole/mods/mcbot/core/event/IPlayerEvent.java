@@ -16,6 +16,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.network.chat.Component;
+//#if MC >= 12006
+//$$ import net.minecraft.core.component.DataComponents;
+//#endif
+
 //#if MC <11900
 import net.minecraft.network.chat.TextComponent;
 //#endif
@@ -76,7 +80,11 @@ public class IPlayerEvent {
                 } else {
                     itemStack = ItemStack.EMPTY;
                 }
+                //#if MC < 12100
                 message = !itemStack.isEmpty() && itemStack.hasCustomHoverName() ? I18n.get(string + ".item", player.getDisplayName().getString(), component.getString(), itemStack.getDisplayName().getString()) : I18n.get(string,player.getDisplayName().getString(), component.getString());
+                //#else
+                //$$ message = !itemStack.isEmpty() && itemStack.get(DataComponents.CUSTOM_NAME) != null ? I18n.get(string + ".item", player.getDisplayName().getString(), component.getString(), itemStack.getDisplayName().getString()) : I18n.get(string,player.getDisplayName().getString(), component.getString());
+                //#endif
             }
             val msg = String.format(message, player.getDisplayName().getString());
             send(msg);
