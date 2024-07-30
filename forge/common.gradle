@@ -6,7 +6,7 @@ int mcVersion = 1
 
 preprocess {
     mcVersion = vars.get().get("MC")
-    tabIndentation.set(false)
+    // tabIndentation.set(false)
 }
 
 
@@ -29,13 +29,9 @@ dependencies {
     implementation forgeRuntimeLibrary (include("cn.evole.config:AtomConfig-Toml:${toml_version}")){transitive = false}
 
     if (mcVersion == 11605) include ("org.slf4j:slf4j-api:2.0.7")
-    compileOnly ("org.projectlombok:lombok:1.18.24")
-    annotationProcessor ("org.projectlombok:lombok:1.18.24")
+    compileOnly ("org.projectlombok:lombok:1.18.30")
+    annotationProcessor ("org.projectlombok:lombok:1.18.30")
 
-}
-
-loom {
-    silentMojangMappingsLicense()
 }
 
 remapJar {
