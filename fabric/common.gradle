@@ -4,7 +4,7 @@ apply(plugin: "dev.vankka.dependencydownload.plugin")
 
 preprocess {
     int mcVersion = vars.get()["MC"]
-    tabIndentation = true
+    // tabIndentation = true
 }
 
 
