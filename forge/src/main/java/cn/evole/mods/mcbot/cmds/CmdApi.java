@@ -1,6 +1,7 @@
 package cn.evole.mods.mcbot.cmds;
 
 import cn.evole.mods.mcbot.Const;
+import cn.evole.mods.mcbot.IMcBot;
 import cn.evole.mods.mcbot.init.handler.CustomCmdHandler;
 import cn.evole.mods.mcbot.util.onebot.BotUtils;
 import cn.evole.onebot.sdk.event.message.GroupMessageEvent;
@@ -15,6 +16,13 @@ public class CmdApi {
     private static String CmdMain(String cmd, boolean isOp, boolean vanishSupport) {
         StringBuilder result = new StringBuilder();
         if (!vanishSupport) {
+            //#if MC >= 11900
+            //$$ IMcBot.SERVER.getCommands().performPrefixedCommand(isOp ? BotCmdRun.OP : BotCmdRun.CUSTOM, cmd);//优雅
+            //#else
+            IMcBot.SERVER.getCommands().performCommand(isOp ? BotCmdRun.OP : BotCmdRun.CUSTOM, cmd);
+            //#endif
+        }
+        else {
             //VanishAPI.performPrefixedCommand(McBot.SERVER.getCommands(), isOp ? BotCmdRun.OP : BotCmdRun.CUSTOM, cmd);
         }
         for (String s : (isOp ? BotCmdRun.OP.outPut : BotCmdRun.CUSTOM.outPut)) {
