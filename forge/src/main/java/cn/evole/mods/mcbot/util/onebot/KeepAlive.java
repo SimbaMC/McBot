@@ -31,7 +31,7 @@ public class KeepAlive {
     }
 
     public void register() {
-        while (true) {
+        while (!Const.isShutdown) {
             val limit = ModConfig.INSTANCE.getBotConfig().getMaxReconnectAttempts();
             if (IMcBot.connected && ModConfig.INSTANCE.getBotConfig().isReconnect() && limit >= 1) {
                 if (IMcBot.onebot.getWs().isClosed()) {  // 当你写完复杂的机制后突然发现有现成的api时 be like
