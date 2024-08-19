@@ -94,16 +94,16 @@ publishing {
 
     repositories {
         mavenLocal()
-        if (System.getenv('MAVEN_USERNAME') != null && System.getenv('MAVEN_PASSWORD') != null) {
-            maven {
-                name 'release'
-                url = 'https://maven.nova-committee.cn/releases'
-
-                credentials {
-                    username System.getenv('MAVEN_USERNAME')
-                    password System.getenv('MAVEN_PASSWORD')
-                }
-            }
-        }
+//        if (System.getenv('MAVEN_USERNAME') != null && System.getenv('MAVEN_PASSWORD') != null) {
+//            maven {
+//                name 'release'
+//                url = 'https://maven.nova-committee.cn/releases'
+//
+//                credentials {
+//                    username System.getenv('MAVEN_USERNAME')
+//                    password System.getenv('MAVEN_PASSWORD')
+//                }
+//            }
+//        }
     }
 }

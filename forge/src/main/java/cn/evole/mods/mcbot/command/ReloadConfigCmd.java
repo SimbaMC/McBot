@@ -4,6 +4,7 @@ import cn.evole.mods.mcbot.config.ModConfig;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.commands.CommandSourceStack;
+import cn.evole.mods.mcbot.init.handler.CustomCmdHandler;
 import net.minecraft.network.chat.Component;
 //#if MC <11900
 import net.minecraft.network.chat.TextComponent;

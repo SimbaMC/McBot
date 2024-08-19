@@ -32,7 +32,7 @@ public class CustomCmdHandler {
 
     private static final File dir = IMcBot.CONFIG_FOLDER.resolve("cmds").toFile();
 
-    private final Map<String, CustomCmd> customCmdMap = new LinkedHashMap<>();
+    private Map<String, CustomCmd> customCmdMap = new LinkedHashMap<>();
 
     public List<CustomCmd> getCustomCmds() {
         return Lists.newArrayList(this.customCmdMap.values());
