@@ -54,6 +54,7 @@ public class CustomCmdHandler {
         clear();
 
         if (!dir.mkdirs() && dir.isDirectory()) {
+            customCmdMap = new LinkedHashMap<>();
             this.loadFiles();
         }
 

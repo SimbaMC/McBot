@@ -18,6 +18,7 @@ public class ReloadConfigCmd {
     public static int execute(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         try {
             ModConfig.INSTANCE.reload();
+            CustomCmdHandler.INSTANCE.load();
             if (ModConfig.INSTANCE == null) {
                 //#if MC >= 12000
                 //$$ context.getSource().sendSuccess(()->Component.literal("重载配置失败"), true);
