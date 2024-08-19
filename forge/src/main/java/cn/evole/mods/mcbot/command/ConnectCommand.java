@@ -20,7 +20,7 @@ public class ConnectCommand {
     public static int execute(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         val parameter = context.getArgument("parameter", String.class);
 
-        val pattern = Pattern.compile("(\\d+\\.\\d+\\.\\d+\\.\\d+):(\\d+)");
+        val pattern = Pattern.compile(":");
         val matcher = pattern.matcher(parameter);
         if (matcher.find()) {
             ModConfig.INSTANCE.getBotConfig().setUrl(parameter);
