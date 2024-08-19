@@ -55,7 +55,7 @@ public class CmdApi {
                         .forEach(customCmd -> GroupCmd(event.getGroupId(), BotUtils.varParse(customCmd, originCommand, event), true, customCmd.isVanishSupport()));//admin
             } else
                 CustomCmdHandler.INSTANCE.getCustomCmds().stream()
-                        .filter(customCmd -> customCmd.getRequirePermission() < 1 && performedCommand.equals(customCmd.getCmdAlies()))
+                        .filter(customCmd -> customCmd.getRequirePermission() < 3 && performedCommand.equals(customCmd.getCmdAlies()))
                         .forEach(customCmd -> GroupCmd(event.getGroupId(), BotUtils.varParse(customCmd, originCommand, event), false, customCmd.isVanishSupport()));
         }
 

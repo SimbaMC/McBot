@@ -30,7 +30,7 @@ import net.minecraft.network.chat.TextComponent;
 public class BotCmdRun extends CommandSourceStack {
 
     //#if MC < 11900
-    public static BotCmdRun CUSTOM = new BotCmdRun(CommandSource.NULL, Vec3.ZERO, Vec2.ZERO, IMcBot.SERVER.overworld(), 0, "Bot", new TextComponent("Bot"), IMcBot.SERVER, null);
+    public static BotCmdRun CUSTOM = new BotCmdRun(CommandSource.NULL, Vec3.ZERO, Vec2.ZERO, IMcBot.SERVER.overworld(), 2, "Bot", new TextComponent("Bot"), IMcBot.SERVER, null);
     public static BotCmdRun OP = new BotCmdRun(CommandSource.NULL, Vec3.ZERO, Vec2.ZERO, IMcBot.SERVER.overworld(), 4, "OP", new TextComponent("OP"), IMcBot.SERVER, null);
     //#else
     //$$ public static BotCmdRun CUSTOM = new BotCmdRun(CommandSource.NULL, Vec3.ZERO, Vec2.ZERO, IMcBot.SERVER.overworld(), 0, "Bot", Component.literal("Bot"), IMcBot.SERVER, null);
