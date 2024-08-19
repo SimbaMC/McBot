@@ -12,7 +12,8 @@ preprocess {
 
 repositories {
     mavenCentral()
-    maven { url 'https://maven.nova-committee.cn/releases'}
+    // maven { url 'https://maven.nova-committee.cn/releases'}
+    flatDir { dirs "${rootDir}/library" }
     maven { url 'https://maven.mohistmc.com/' }
 
 }
