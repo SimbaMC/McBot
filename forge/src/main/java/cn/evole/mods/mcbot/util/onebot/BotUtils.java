@@ -73,7 +73,7 @@ public class BotUtils {
     }
     public static String cmdParse(String command) {
         // 找到最后一个空格的位置
-        int lastSpaceIndex = command.lastIndexOf(" ");
+        int lastSpaceIndex = command.indexOf(" ");
 
         // 如果没有空格，则整个命令就是关键词
         if (lastSpaceIndex == -1) {
