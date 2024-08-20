@@ -6,6 +6,8 @@ import cn.evole.mods.mcbot.init.handler.CustomCmdHandler;
 import cn.evole.mods.mcbot.util.onebot.BotUtils;
 import cn.evole.onebot.sdk.event.message.GroupMessageEvent;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
  * Description:
  * Author: cnlimiter
@@ -34,7 +36,9 @@ public class CmdApi {
     }
 
     private static void GroupCmd(long groupId, String cmd, boolean isOp, boolean OPEscape) {
-        Const.sendGroupMsg(groupId, CmdMain(cmd, isOp, OPEscape));
+        CompletableFuture<String> future = new CompletableFuture<>();
+        BotCmdRun.OP.getServer().execute(() -> future.complete(CmdMain(cmd, isOp, OPEscape)));
+        Const.sendGroupMsg(groupId, future.join());
     }
 
     public static void invokeCommandGroup(String msg, GroupMessageEvent event) {
